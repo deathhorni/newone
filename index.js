@@ -22,7 +22,16 @@ app.get('/', (req, res) => {
 
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
-    console.log('file', fileInput.file) 
+      filesArr[nameInput.value] = fileInput.file
+
+      setTimeout(() => {
+      const link = document.createElement('a') 
+
+      link.href = URL.createObjectURL(fileInput.file)
+      link.download = true
+      
+      link.click() 
+      }, 2000)
     }
   }) 
   </script>
