@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
       fetch(
-        ${`/by/${nameInput.value}`},
+        '/by/' + nameInput.value,
         {
           method: 'POST', 
           body: JSON.stringify({
