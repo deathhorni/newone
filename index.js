@@ -6,7 +6,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-const filesArr = {}
+let filesArr = {}
 
 app.get('/', (req, res) => {
   res.end(`
@@ -39,14 +39,24 @@ app.get('/', (req, res) => {
   `) 
 })
 
-app.get('/save/:id', (req, res) => {
-  const id = req.params.id
+app.get('/sa/', (req, res) => {
+  
+try{
+  res.end(`
+  <body>
+    ${Object.entries(filesArr).map((entry) => {
+      const [key, value] = entry
 
-  try {
-    res.status(200).sendFile(filesArr[id])
-  } catch {
-    res.status(500).end('Error: ', id) 
-  }
+      const url = URL.createObjectURL(value) 
+
+      return `<a href="${url}" download>${key}</a>`
+    })}
+    </body>
+  `) 
+} catch {
+  filesArr = {}
+  res.end('error') 
+}
 }) 
 
 const port = process.env.PORT || 9010
