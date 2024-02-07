@@ -45,12 +45,12 @@ app.get('/', (req, res) => {
   `) 
 })
 
-app.post('/by/:id', (req, res) => {
-  const id = req.params.id
-  const bytes = req.body?.bytes
+//app.post('/by/:id', (req, res) => {
+  //const id = req.params.id
+  //const bytes = req.body?.bytes
 
-  res.status.(200).end('ok') 
-}) 
+  //res.status.(200).end('ok') 
+//}) 
 
 app.get('/sa/', (req, res) => {
   
