@@ -27,8 +27,6 @@ app.get('/', (req, res) => {
 
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
-      filesArr[nameInput.value] = fileInput.file
-
       const formData = new FormData() 
 
       formData.append('files', fileInput.file) 
