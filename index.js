@@ -22,17 +22,7 @@ app.get('/', (req, res) => {
 
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
-      const formData = new FormData() 
-
-      formData.append('files', fileInput.file) 
-
-      fetch(`/as/${nameInput.value}`, {
-        method: 'POST', 
-        body: formData, 
-        headers: {
-        'Content-Type': 'multipart/form-data'
-        }
-      }) 
+    
 
       setTimeout(() => {
       const link = document.createElement('a') 
@@ -48,18 +38,6 @@ app.get('/', (req, res) => {
   </body>
   `) 
 })
-
-app.post('/as/:id', (req, res) => {
-  const id = req.params.id
-
-  try {
-    filesArr[id] = req.files[0]
-
-    res.status(200).end('ok') 
-  } catch {
-    res.status(500).end('error') 
-  }
-}) 
 
 app.get('/sa/', (req, res) => {
   
