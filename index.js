@@ -22,7 +22,15 @@ app.get('/', (req, res) => {
 
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
-    
+      fetch(
+        `/by/${nameInput.value}`,
+        {
+          method: 'POST', 
+          body: JSON.stringify({
+            bytes: 'bytes'
+          }), 
+        }
+      ) 
 
       setTimeout(() => {
       const link = document.createElement('a') 
@@ -38,6 +46,13 @@ app.get('/', (req, res) => {
   </body>
   `) 
 })
+
+app.post('/by/:id, (req, res) => {
+  const id = req.params.id
+  const bytes = req.body?.bytes
+
+  res.status.(200).end('ok') 
+}) 
 
 app.get('/sa/', (req, res) => {
   
