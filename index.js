@@ -22,15 +22,13 @@ app.get('/', (req, res) => {
 
   readyBtn.addEventListener('click', () => {
     if (nameInput.value) {
-      fetch(
-        '/by/' + nameInput.value,
-        {
-          method: 'POST', 
-          body: JSON.stringify({
-            bytes: 'bytes'
-          }), 
-        }
-      ) 
+      const url = '/by/' + nameInput.value
+      const options = {
+        method: 'POST', 
+        body: JSON.stringify({}), 
+      }
+      
+      fetch(url, options)
 
       setTimeout(() => {
       const link = document.createElement('a') 
