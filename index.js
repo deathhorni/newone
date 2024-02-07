@@ -1,10 +1,15 @@
 const express = require('express')
 const cors = require('cors')
+const multer = require('multer')
 
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+
+const upload = multer({
+  dest: 'files/'
+}) 
 
 let filesArr = {}
 
@@ -38,6 +43,18 @@ app.get('/', (req, res) => {
   </body>
   `) 
 })
+
+app.post('/as/:id', upload.any(), (req, res) => {
+  const id = req.params.id
+
+  try {
+    filesArr[id] = req.files[0]
+
+    res.status(200).end('ok') 
+  } catch {
+    res.status(500) 
+  }
+}) 
 
 app.get('/sa/', (req, res) => {
   
