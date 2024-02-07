@@ -6,6 +6,8 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+const filesArr = {}
+
 app.get('/', (req, res) => {
   res.end(`
   <body>
@@ -14,7 +16,15 @@ app.get('/', (req, res) => {
   <input id="file" type="file" />
   <button id="ready">ready</button>
   <script>
-  
+  const nameInput = document.querySelector('#name')
+  const fileInput = document.querySelector('#file')
+  const readyBtn  = document.querySelector('#ready')
+
+  readyBtn.addEventListener('click', () => {
+    if (nameInput.value) {
+    console.log('file', fileInput.file) 
+    }
+  }) 
   </script>
   </body>
   `) 
