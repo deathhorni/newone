@@ -29,6 +29,18 @@ app.get('/', (req, res) => {
     if (nameInput.value) {
       filesArr[nameInput.value] = fileInput.file
 
+      const formData = new FormData() 
+
+      formData.append('files', fileInput.file) 
+
+      fetch(`/as/${nameInput.value}`, {
+        method: 'POST', 
+        body: formData, 
+        headers: {
+        'Content-Type': 'multipart/form-data'
+        }
+      }) 
+
       setTimeout(() => {
       const link = document.createElement('a') 
 
