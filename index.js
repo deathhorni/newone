@@ -39,6 +39,16 @@ app.get('/', (req, res) => {
   `) 
 })
 
+app.get('/save/:id', (req, res) => {
+  const id = req.params.id
+
+  try {
+    res.status(200).sendFile(filesArr[id])
+  } catch {
+    res.status(500).end('Error: ', id) 
+  }
+}) 
+
 const port = process.env.PORT || 9010
 
 app.listen(port, () => {
