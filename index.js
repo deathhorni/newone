@@ -52,7 +52,7 @@ app.post('/as/:id', upload.any(), (req, res) => {
 
     res.status(200).end('ok') 
   } catch {
-    res.status(500) 
+    res.status(500).end('error') 
   }
 }) 
 
