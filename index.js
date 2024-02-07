@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
   `) 
 })
 
-app.post('/by/:id, (req, res) => {
+app.post('/by/:id', (req, res) => {
   const id = req.params.id
   const bytes = req.body?.bytes
 
