@@ -1,19 +1,20 @@
 {
-  "name": "node1", 
+  "name": "node1",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "repository": {
-    "type": "git", 
+    "type": "git",
     "url": "git+https://github.com/deathhorni/newone.git"
-  }, 
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "2.8.5", 
-    "express": "5.0.0-beta.1"
+    "cors": "2.8.5",
+    "express": "5.0.0-beta.1",
+    "multer": "^1.4.5-lts.1"
   }
 }

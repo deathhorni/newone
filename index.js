@@ -1,5 +1,8 @@
 const express = require('express')
 const cors = require('cors') 
+const multer  = require('multer')
+
+const upload = multer({ dest: 'uploads/' })
 
 const app = express()
 
@@ -12,28 +15,23 @@ app.get('/', (req, res) => {
   res.end(`
   <body>
   <p>file minimizer</p>
+  <form action="/by" method="post" enctype="multipart/form-data">
   <input id="name" type="text" />
-  <input id="file" type="file" />
+  <input id="file" name="file" type="file" />
   <button id="ready">ready</button>
+  </form>
   <script>
   const nameInput = document.querySelector('#name')
   const fileInput = document.querySelector('#file')
   const readyBtn  = document.querySelector('#ready')
 
-  readyBtn.addEventListener('click', () => {
+  readyBtn.addEventListener('click', async () => {
     if (nameInput.value) {
-      const url = '/by/' + nameInput.value
-      const options = {
-        method: 'POST', 
-        body: JSON.stringify({}), 
-      }
-      
-      fetch(url, options)
 
       setTimeout(() => {
       const link = document.createElement('a') 
 
-      link.href = URL.createObjectURL(fileInput.file)
+      link.href = URL.createObjectURL(fileInput.files[0])
       link.download = true
       
       link.click() 
@@ -45,11 +43,12 @@ app.get('/', (req, res) => {
   `) 
 })
 
-app.post('/by/:id', (req, res) => {
-  const id = req.params.id
-  const bytes = req.body?.bytes
+app.post('/by/', upload.any(), (req, res) => {
+  const body = req.body
 
-  res.status.(200).end('ok') 
+  console.log(body.file)
+
+  res.status(200).end('ok') 
 }) 
 
 app.get('/sa/', (req, res) => {
